@@ -7,7 +7,7 @@ export default function Home() {
   console.log(categories);
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4">
+    <div className="mx-auto w-full max-w-5xl px-4">
       <section className="mt-20 flex flex-col gap-16 mb-20">
         <header>
           <h3 className="text-5xl font-semibold leading-tight text-gray-900 dark:text-gray-100">
@@ -30,8 +30,8 @@ export default function Home() {
               >
                 <span className="shrink-0 mr-2">[{article.category}]</span>
                 <span className="shrink-0">{article.title}</span>
-                <span className="mx-8 hidden h-px w-full grow border-t border-dashed border-gray-300 sm:flex" />
-                <span className="shrink-0 text-gray-600 dark:text-gray-200">
+                <span className="mx-8 hidden h-px w-full grow border-t border-dashed border-gray-300 dark:border-gray-700 sm:flex" />
+                <span className="shrink-0 text-gray-400 dark:text-gray-600">
                   {article.date}
                 </span>
               </Link>

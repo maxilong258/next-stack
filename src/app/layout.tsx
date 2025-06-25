@@ -33,7 +33,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <div className="min-h-screen flex flex-col">
             {children}
-            <footer className="mt-auto mx-auto w-full max-w-6xl px-4 py-8">
+            <footer className="mt-auto mx-auto w-full max-w-5xl px-4 py-8">
               <GithubIcon />
               {/* {!!slateConfig.socialLinks && <SocialLinks client:visible />} */}
               <div className="mt-4 flex items-center justify-between">
