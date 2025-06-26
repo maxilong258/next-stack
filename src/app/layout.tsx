@@ -2,8 +2,11 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import { GithubIcon } from "lucide-react";
+import { GithubIcon, TwitterIcon } from "lucide-react";
+import Link from "next/link";
 import { ThemeToggle } from "@/components/theme/theme-toggle";
+import { siteConfig } from "@/config/site";
+import { Button } from "@/components/ui/button";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,8 +28,14 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  // 图标映射
+  const iconMap = {
+    github: GithubIcon,
+    twitter: TwitterIcon,
+  } as const;
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={siteConfig.lang} suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -34,18 +43,37 @@ export default function RootLayout({
           <div className="min-h-screen flex flex-col">
             {children}
             <footer className="mt-auto mx-auto w-full max-w-5xl px-4 py-8">
-              <GithubIcon />
-              {/* {!!slateConfig.socialLinks && <SocialLinks client:visible />} */}
+              <div className="flex gap-4">
+
+              {siteConfig.socialLinks.map((item) => {
+                const IconComponent =
+                  iconMap[item.icon as keyof typeof iconMap];
+                return (
+                  <Button
+                    key={item.link}
+                    variant="ghost"
+                    size="icon"
+                    asChild
+                    className="rounded-full bg-gray-200 text-gray-600 hover:bg-gray-300 
+                      hover:text-gray-900 dark:bg-[#1e1f21] dark:text-gray-400 dark:hover:text-gray-200"
+                  >
+                    <Link key={item.link} href={item.link} target="_blank">
+                      <IconComponent className="!w-5 !h-5" />
+                    </Link>
+                  </Button>
+                  );
+                })}
+              </div>
+
               <div className="mt-4 flex items-center justify-between">
                 <div className="text-slate-600 dark:text-slate-400 text-sm">
-                  {"copyright"}
+                  {siteConfig.copyRight}
                 </div>
-                {/* S theme selection */}
                 <ThemeToggle />
-                {/* E theme selection */}
               </div>
             </footer>
           </div>
+          <div className="fixed inset-0 z-[-1] h-full w-full bg-[url('/noise.png')] bg-[size:128px_128px] bg-repeat opacity-[0.06]"></div>
         </ThemeProvider>
       </body>
     </html>
