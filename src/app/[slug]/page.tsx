@@ -3,8 +3,9 @@ import { getArticleData } from "@/lib/articles"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-const Article = async ({ params }: { params: { slug: string } }) => {
-  const articleData = await getArticleData(params.slug)
+const Article = async ({ params }: { params: Promise<{ slug: string }> }) => {
+  const { slug } = await params
+  const articleData = await getArticleData(slug)
 
   return (
     <section className="mx-auto w-full max-w-5xl px-4 mt-20 flex flex-col gap-10">

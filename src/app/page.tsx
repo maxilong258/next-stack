@@ -5,7 +5,6 @@ import Link from "next/link";
 export default function Home() {
   const articles = getSortedArticles();
   const categories = getAllCategories();
-  console.log(categories);
 
   return (
     <div className="mx-auto w-full max-w-5xl px-4">
