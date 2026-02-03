@@ -126,7 +126,7 @@
 }
 
 .article > h1 {
-  @apply text-4xl tracking-tight mb-4 mt-10 font-bold;
+  @apply text-4xl tracking-tight mb-12 mt-10 font-bold;
 }
 
 .article > h2 {
