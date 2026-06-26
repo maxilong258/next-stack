@@ -3,7 +3,10 @@ import matter from "gray-matter"
 import path from "path"
 import dayjs from "dayjs"
 import { remark } from "remark"
-import html from "remark-html"
+import remarkMath from "remark-math"
+import remarkRehype from "remark-rehype"
+import rehypeKatex from "rehype-katex"
+import rehypeStringify from "rehype-stringify"
 
 import type { ArticleItem } from "@/types"
 
@@ -71,7 +74,12 @@ export const getArticleData = async (id: string) => {
   const fullPath = path.join(articlesDirectory, `${id}.md`)
   const fileContents = fs.readFileSync(fullPath, "utf-8")
   const matterResult = matter(fileContents)
-  const processedContent = await remark().use(html).process(matterResult.content)
+  const processedContent = await remark()
+    .use(remarkMath)
+    .use(remarkRehype)
+    .use(rehypeKatex)
+    .use(rehypeStringify)
+    .process(matterResult.content)
   const contentHtml = processedContent.toString()
 
   return {

@@ -1,6 +1,6 @@
 ---
 title: "编程速度逐渐加快 该失业的是程序员还是产品经理?"
-category: "technology"
+category: "rant"
 date: "02-03-2026"
 ---
 
