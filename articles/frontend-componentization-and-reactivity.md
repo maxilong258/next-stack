@@ -1,5 +1,6 @@
 ---
 title: "前端核心概念解析：组件化与响应式（发布订阅）"
+description: "用 PixiJS 小游戏里的 Component 和 GameState，理解组件化封装与发布订阅模式。"
 category: "technology"
 date: "2026-02-17"
 ---

@@ -123,15 +123,34 @@
 }
 
 .article {
-  @apply flex flex-col gap-3 text-lg tracking-wide mb-20;
+  @apply flex flex-col gap-5 text-lg tracking-wide mb-20;
 }
 
-.article > h1 {
-  @apply text-4xl tracking-tight mb-12 mt-10 font-bold;
+.article h1 {
+  @apply text-4xl tracking-tight font-bold;
+  margin-top: 2.5rem;
+  margin-bottom: 2rem;
 }
 
-.article > h2 {
-  @apply text-3xl tracking-tight mb-4 mt-6 font-bold;
+.article h2 {
+  @apply text-3xl tracking-tight font-bold;
+  margin-top: 3.5rem;
+  margin-bottom: 1rem;
+  padding-top: 0.5rem;
+}
+
+.article h3 {
+  @apply text-2xl tracking-tight font-bold;
+  margin-top: 2.5rem;
+  margin-bottom: 0.75rem;
+  padding-top: 0.5rem;
+}
+
+.article h4 {
+  @apply text-xl font-semibold;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+  padding-top: 0.25rem;
 }
 
 .article > ol {
@@ -150,7 +169,57 @@
   @apply pl-5 italic border-l-2 border-neutral-600 opacity-40;
 }
 
-.article > p > img {
-  @apply w-1/2 my-6;
+.article table {
+  width: 100%;
+  max-width: 42rem;
+  margin: 1.5rem auto;
+  border-collapse: collapse;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.article table th,
+.article table td {
+  border: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.article table th {
+  background-color: var(--muted);
+  font-weight: 600;
+}
+
+.article table tbody tr:nth-child(even) td {
+  background-color: color-mix(in oklch, var(--muted) 40%, transparent);
+}
+
+.article img {
+  display: block;
+  max-width: 20rem;
+  width: 100%;
+  margin: 2rem auto;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+}
+
+.article a {
+  color: #2563eb;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.article a:hover {
+  color: #1d4ed8;
+}
+
+.dark .article a {
+  color: #60a5fa;
+}
+
+.dark .article a:hover {
+  color: #93bbfd;
 }
 

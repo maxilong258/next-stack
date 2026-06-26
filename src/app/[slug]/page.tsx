@@ -1,7 +1,34 @@
+import type { Metadata } from "next"
 import Link from "next/link"
-import { getArticleData } from "@/lib/articles"
+import { getArticleData, getArticleIds } from "@/lib/articles"
+import { siteConfig } from "@/config/site"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
+
+export const generateStaticParams = () => {
+  return getArticleIds().map((slug) => ({ slug }))
+}
+
+export const generateMetadata = async ({
+  params,
+}: {
+  params: Promise<{ slug: string }>
+}): Promise<Metadata> => {
+  const { slug } = await params
+  const article = await getArticleData(slug)
+  const description = article.description ?? siteConfig.description
+
+  return {
+    title: article.title,
+    description,
+    openGraph: {
+      title: article.title,
+      description,
+      type: "article",
+      publishedTime: article.date,
+    },
+  }
+}
 
 const Article = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params
