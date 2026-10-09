@@ -123,56 +123,82 @@
 }
 
 .article {
-  @apply flex flex-col gap-5 text-lg tracking-wide mb-20;
+  @apply flex flex-col gap-4 text-base leading-7 mb-20;
 }
 
 .article h1 {
-  @apply text-4xl tracking-tight font-bold;
-  margin-top: 2.5rem;
-  margin-bottom: 2rem;
+  @apply text-3xl leading-tight tracking-tight font-bold;
+  margin-top: 0;
+  margin-bottom: 1.25rem;
 }
 
 .article h2 {
-  @apply text-3xl tracking-tight font-bold;
-  margin-top: 3.5rem;
-  margin-bottom: 1rem;
-  padding-top: 0.5rem;
+  @apply text-2xl leading-snug tracking-tight font-bold;
+  margin-top: 2rem;
+  margin-bottom: 0.25rem;
 }
 
 .article h3 {
-  @apply text-2xl tracking-tight font-bold;
-  margin-top: 2.5rem;
-  margin-bottom: 0.75rem;
-  padding-top: 0.5rem;
+  @apply text-xl leading-snug tracking-tight font-semibold;
+  margin-top: 1.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .article h4 {
-  @apply text-xl font-semibold;
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
-  padding-top: 0.25rem;
+  @apply text-lg leading-snug font-semibold;
+  margin-top: 1.25rem;
+  margin-bottom: 0.25rem;
 }
 
 .article > ol {
-  @apply list-decimal flex flex-col mx-10 gap-2;
+  @apply list-decimal flex flex-col gap-1.5 pl-6;
 }
 
 .article > ul {
-  @apply list-disc flex flex-col mx-10 gap-2;
+  @apply list-disc flex flex-col gap-1.5 pl-6;
 }
 
 .article > pre {
-  @apply bg-neutral-950 text-neutral-50 p-5 overflow-scroll;
+  @apply rounded-lg bg-neutral-950 px-4 py-3.5 text-sm leading-6 text-neutral-50;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgb(255 255 255 / 0.28) transparent;
+}
+
+.article > pre::-webkit-scrollbar {
+  height: 6px;
+}
+
+.article > pre::-webkit-scrollbar-thumb {
+  background: rgb(255 255 255 / 0.28);
+  border-radius: 999px;
+}
+
+.article > pre::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.article > pre code {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+.article :not(pre) > code {
+  font-family: var(--font-geist-mono), ui-monospace, monospace;
+  font-size: 0.9em;
+  padding: 0.1em 0.35em;
+  border-radius: 0.25rem;
+  background: var(--muted);
 }
 
 .article > blockquote {
-  @apply pl-5 italic border-l-2 border-neutral-600 opacity-40;
+  @apply border-l-2 border-neutral-400 pl-4 text-neutral-600 italic dark:border-neutral-600 dark:text-neutral-400;
 }
 
 .article table {
   width: 100%;
   max-width: 42rem;
-  margin: 1.5rem auto;
+  margin: 0.5rem auto;
   border-collapse: collapse;
   font-size: 1rem;
   line-height: 1.6;
@@ -181,7 +207,7 @@
 .article table th,
 .article table td {
   border: 1px solid var(--border);
-  padding: 0.75rem 1rem;
+  padding: 0.6rem 0.85rem;
   text-align: left;
   vertical-align: top;
 }
