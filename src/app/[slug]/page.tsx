@@ -4,6 +4,7 @@ import { getArticleData, getArticleIds } from "@/lib/articles"
 import { siteConfig } from "@/config/site"
 import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { FlexOverflowDemo } from "@/components/flex-overflow-demo"
 
 export const generateStaticParams = () => {
   return getArticleIds().map((slug) => ({ slug }))
@@ -33,6 +34,7 @@ export const generateMetadata = async ({
 const Article = async ({ params }: { params: Promise<{ slug: string }> }) => {
   const { slug } = await params
   const articleData = await getArticleData(slug)
+  const showFlexDemo = slug === "css-flexbox"
 
   return (
     <section className="mx-auto w-full max-w-5xl px-4 mt-20 flex flex-col gap-10">
@@ -47,8 +49,10 @@ const Article = async ({ params }: { params: Promise<{ slug: string }> }) => {
       </div>
       <article
         className="article"
+        style={showFlexDemo ? { marginBottom: 0 } : undefined}
         dangerouslySetInnerHTML={{ __html: articleData.contentHtml }}
       />
+      {showFlexDemo && <FlexOverflowDemo />}
     </section>
   )
 }
